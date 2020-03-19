@@ -9,8 +9,11 @@
 __ps1() {
   # Colors (see "88/256 Colors" section):
   # http://misc.flogisoft.com/bash/tip_colors_and_formatting#colors1
-  local host="\u@\h"
-  local host_bg_color=31
+  local user="\u"
+  local user_bg_color=160
+  local user_text_color=231
+  local host="\h"
+  local host_bg_color=161
   local host_text_color=231
   local host_bold=true
   local path_bg_color=240
@@ -45,7 +48,7 @@ __ps1() {
       path=${path//\//"\[\e[0;38;5;${path_separator_color};48;5;${path_bg_color}m\]  \[\e[${path_bold}38;5;${path_text_color}m\]"}
     fi
 
-    PS1="\n\[\e[${host_bold}48;5;${host_bg_color};38;5;${host_text_color}m\] ${host} \[\e[0;38;5;${host_bg_color};48;5;${path_bg_color}m\]\[\e[${path_bold}48;5;${path_bg_color};38;5;${path_text_color}m\] $path \[\e[0;38;5;${path_bg_color}m\]\[\e[0m\] "
+    PS1="\[\e[${host_bold}48;5;${user_bg_color};38;5;${user_text_color}m\] ${user} \[\e[0;38;5;${user_bg_color};48;5;${host_bg_color}m\]\[\e[${host_bold}48;5;${host_bg_color};38;5;${host_text_color}m\] ${host} \[\e[0;38;5;${host_bg_color};48;5;${path_bg_color}m\]\[\e[${path_bold}48;5;${path_bg_color};38;5;${path_text_color}m\] $path \[\e[0;38;5;${path_bg_color}m\]\[\e[0m\] "
   fi
 }
 
